@@ -81,6 +81,10 @@ class CommentController {
     }
 
     def create = {
+        if (session.userId == null) {
+            flash.message = "You must be logged in to create a Request"
+            redirect(controller:'user', action:'login')
+        }
         def commentInstance = new Comment()
         commentInstance.properties = params
         return ['commentInstance':commentInstance]
@@ -88,7 +92,11 @@ class CommentController {
 
     def save = {
         def commentInstance = new Comment(params)
+        commentInstance.createdBy = User.findByUserId(session.userId)
         if(!commentInstance.hasErrors() && commentInstance.save()) {
+            def user = User.findByUserId(session.userId)
+            user.commentsMade++
+            user.save()
             flash.message = "Comment ${commentInstance.id} created"
             redirect(action:show,id:commentInstance.id)
         }

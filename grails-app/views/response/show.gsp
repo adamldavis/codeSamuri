@@ -70,6 +70,13 @@
                             
                         </tr>
                     
+                        <tr class="prop">
+                            <td valign="top" class="name">Request:</td>
+                            
+                            <td valign="top" class="value"><g:link controller="request" action="show" id="${responseInstance?.request?.id}">${responseInstance?.request?.encodeAsHTML()}</g:link></td>
+                            
+                        </tr>
+                    
                     </tbody>
                 </table>
             </div>

@@ -14,4 +14,8 @@ class Request {
         text(size:10..500)
 
     }
+
+    String toString() {
+        title
+    }
 }

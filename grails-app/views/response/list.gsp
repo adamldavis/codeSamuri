@@ -31,6 +31,8 @@
                    	    
                    	        <g:sortableColumn property="rating" title="Rating" />
                         
+                   	        <th>Request</th>
+                   	    
                         </tr>
                     </thead>
                     <tbody>
@@ -46,6 +48,8 @@
                             <td>${fieldValue(bean:responseInstance, field:'createdBy')}</td>
                         
                             <td>${fieldValue(bean:responseInstance, field:'rating')}</td>
+                        
+                            <td>${fieldValue(bean:responseInstance, field:'request')}</td>
                         
                         </tr>
                     </g:each>

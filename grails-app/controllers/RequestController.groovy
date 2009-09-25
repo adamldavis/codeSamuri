@@ -82,14 +82,24 @@ class RequestController {
 
     def create = {
         def requestInstance = new Request()
+        if (session.userId == null) {
+            flash.message = "You must be logged in to create a Request"
+            redirect(controller:'user', action:'login')
+        }
         requestInstance.properties = params
+        
         return ['requestInstance':requestInstance]
     }
 
     def save = {
         def requestInstance = new Request(params)
+        requestInstance.createdBy = User.findByUserId(session.userId)
+
         if(!requestInstance.hasErrors() && requestInstance.save()) {
-            flash.message = "Request ${requestInstance.id} created"
+            def user = User.findByUserId(session.userId)
+            user.requestsMade++
+            user.save()
+            flash.message = "Request ${requestInstance} created"
             redirect(action:show,id:requestInstance.id)
         }
         else {

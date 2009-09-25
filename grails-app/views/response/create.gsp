@@ -37,28 +37,10 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="created">Created:</label>
+                                    <label for="request">Request:</label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean:responseInstance,field:'created','errors')}">
-                                    <g:datePicker name="created" value="${responseInstance?.created}" precision="minute" ></g:datePicker>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="createdBy">Created By:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:responseInstance,field:'createdBy','errors')}">
-                                    <g:select optionKey="id" from="${User.list()}" name="createdBy.id" value="${responseInstance?.createdBy?.id}" ></g:select>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="rating">Rating:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:responseInstance,field:'rating','errors')}">
-                                    <input type="text" id="rating" name="rating" value="${fieldValue(bean:responseInstance,field:'rating')}" />
+                                <td valign="top" class="value ${hasErrors(bean:responseInstance,field:'request','errors')}">
+                                    <g:select optionKey="id" from="${Request.list()}" name="request.id" value="${responseInstance?.request?.id}" ></g:select>
                                 </td>
                             </tr> 
                         

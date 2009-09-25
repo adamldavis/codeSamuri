@@ -44,33 +44,6 @@
                                 </td>
                             </tr> 
                         
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="created">Created:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:requestInstance,field:'created','errors')}">
-                                    <g:datePicker name="created" value="${requestInstance?.created}" precision="minute" ></g:datePicker>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="createdBy">Created By:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:requestInstance,field:'createdBy','errors')}">
-                                    <g:select optionKey="id" from="${User.list()}" name="createdBy.id" value="${requestInstance?.createdBy?.id}" ></g:select>
-                                </td>
-                            </tr> 
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                    <label for="rating">Rating:</label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean:requestInstance,field:'rating','errors')}">
-                                    <input type="text" id="rating" name="rating" value="${fieldValue(bean:requestInstance,field:'rating')}" />
-                                </td>
-                            </tr> 
-                        
                         </tbody>
                     </table>
                 </div>

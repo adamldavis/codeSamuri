@@ -31,6 +31,12 @@ class UserController {
         }
     }
 
+    def logout = {
+        session.userId = null
+        flash['message'] = 'Successfully logged out'
+        redirect(controller:'request', action:'list')
+    }
+
     def show = {
         def userInstance = User.get( params.id )
 
@@ -86,7 +92,7 @@ class UserController {
             }
             userInstance.properties = params
             if(!userInstance.hasErrors() && userInstance.save()) {
-                flash.message = "User ${params.id} updated"
+                flash.message = "User ${params.userId} updated"
                 redirect(action:show,id:userInstance.id)
             }
             else {
@@ -108,7 +114,7 @@ class UserController {
     def save = {
         def userInstance = new User(params)
         if(!userInstance.hasErrors() && userInstance.save()) {
-            flash.message = "User ${userInstance.id} created"
+            flash.message = "User ${userInstance} created"
             redirect(action:show,id:userInstance.id)
         }
         else {

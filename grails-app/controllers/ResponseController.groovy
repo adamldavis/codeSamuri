@@ -81,6 +81,10 @@ class ResponseController {
     }
 
     def create = {
+        if (session.userId == null) {
+            flash.message = "You must be logged in to create a Request"
+            redirect(controller:'user', action:'login')
+        }
         def responseInstance = new Response()
         responseInstance.properties = params
         return ['responseInstance':responseInstance]
@@ -88,7 +92,11 @@ class ResponseController {
 
     def save = {
         def responseInstance = new Response(params)
+        responseInstance.createdBy = User.findByUserId(session.userId)
         if(!responseInstance.hasErrors() && responseInstance.save()) {
+            def user = User.findByUserId(session.userId)
+            user.responsesMade++
+            user.save()
             flash.message = "Response ${responseInstance.id} created"
             redirect(action:show,id:responseInstance.id)
         }

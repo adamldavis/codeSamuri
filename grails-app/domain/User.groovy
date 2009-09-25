@@ -4,7 +4,7 @@ class User {
     String email
     
     int rating
-    int requestsMade
+    int requestsMade 
     int responsesMade
     int commentsMade
 
@@ -16,4 +16,8 @@ class User {
         password(size:6..16)
     }
     static optionals = ["email"]
+
+    String toString() {
+        userId
+    }
 }
