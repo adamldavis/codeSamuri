@@ -49,9 +49,10 @@
                                     <label for="password">Password:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:userInstance,field:'password','errors')}">
-                                    <input type="text" maxlength="16" id="password" name="password" value="${fieldValue(bean:userInstance,field:'password')}"/>
+                                  <input type="password" maxlength="16" id="password" name="password" value="${fieldValue(bean:userInstance,field:'password')}"/>
                                 </td>
                             </tr> 
+                        
                         
                         </tbody>
                     </table>

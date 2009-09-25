@@ -20,14 +20,14 @@
                 <table>
                     <thead>
                         <tr>
-                        
-                   	        <g:sortableColumn property="id" title="Id" />
-                        
+                                                
                    	        <g:sortableColumn property="userId" title="User Id" />
                         
                    	        <g:sortableColumn property="email" title="Email" />
+                                                
+                   	        <g:sortableColumn property="commentsMade" title="Comments Made" />
                         
-                   	        <g:sortableColumn property="password" title="Password" />
+                   	        <g:sortableColumn property="rating" title="Rating" />
                         
                         </tr>
                     </thead>
@@ -35,13 +35,13 @@
                     <g:each in="${userInstanceList}" status="i" var="userInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${userInstance.id}">${fieldValue(bean:userInstance, field:'id')}</g:link></td>
-                        
-                            <td>${fieldValue(bean:userInstance, field:'userId')}</td>
+                            <td><g:link action="show" id="${userInstance.id}">${fieldValue(bean:userInstance, field:'userId')}</g:link></td>
                         
                             <td>${fieldValue(bean:userInstance, field:'email')}</td>
+                                                
+                            <td>${fieldValue(bean:userInstance, field:'commentsMade')}</td>
                         
-                            <td>${fieldValue(bean:userInstance, field:'password')}</td>
+                            <td>${fieldValue(bean:userInstance, field:'rating')}</td>
                         
                         </tr>
                     </g:each>

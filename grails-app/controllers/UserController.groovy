@@ -12,6 +12,25 @@ class UserController {
         [ userInstanceList: User.list( params ), userInstanceTotal: User.count() ]
     }
 
+    def login = {
+        if (request.method == "GET") {
+            session.userId = null
+            def user = new User()
+        }
+        else {
+            def user =
+            User.findByUserIdAndPassword(params.userId,
+                params.password)
+            if (user) {
+                session.userId = user.userId
+                redirect(controller:'request')
+            }
+            else {
+                flash['message'] = 'Please enter a valid user ID and password'
+            }
+        }
+    }
+
     def show = {
         def userInstance = User.get( params.id )
 

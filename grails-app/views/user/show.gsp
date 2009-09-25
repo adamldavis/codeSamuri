@@ -50,6 +50,60 @@
                             
                         </tr>
                     
+                        <tr class="prop">
+                            <td valign="top" class="name">Comments Made:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'commentsMade')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Rating:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'rating')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Requests:</td>
+                            
+                            <td  valign="top" style="text-align:left;" class="value">
+                                <ul>
+                                <g:each var="r" in="${userInstance.requests}">
+                                    <li><g:link controller="request" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Requests Made:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'requestsMade')}</td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Responses:</td>
+                            
+                            <td  valign="top" style="text-align:left;" class="value">
+                                <ul>
+                                <g:each var="r" in="${userInstance.responses}">
+                                    <li><g:link controller="response" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+                                </g:each>
+                                </ul>
+                            </td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name">Responses Made:</td>
+                            
+                            <td valign="top" class="value">${fieldValue(bean:userInstance, field:'responsesMade')}</td>
+                            
+                        </tr>
+                    
                     </tbody>
                 </table>
             </div>

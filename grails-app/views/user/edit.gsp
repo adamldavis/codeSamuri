@@ -52,7 +52,43 @@
                                     <label for="password">Password:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:userInstance,field:'password','errors')}">
-                                    <input type="text" maxlength="16" id="password" name="password" value="${fieldValue(bean:userInstance,field:'password')}"/>
+                                  <input type="password" maxlength="16" id="password" name="password" value="${fieldValue(bean:userInstance,field:'password')}"/>
+                                </td>
+                            </tr> 
+                        
+<ul>
+<g:each var="r" in="${userInstance?.requests?}">
+    <li><g:link controller="request" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+</g:each>
+</ul>
+<g:link controller="request" params="['user.id':userInstance?.id]" action="create">Add Request</g:link>
+
+                                </td>
+                            </tr> 
+                        
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="responses">Responses:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'responses','errors')}">
+                                    
+<ul>
+<g:each var="r" in="${userInstance?.responses?}">
+    <li><g:link controller="response" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+</g:each>
+</ul>
+<g:link controller="response" params="['user.id':userInstance?.id]" action="create">Add Response</g:link>
+
+                                </td>
+                            </tr> 
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="responsesMade">Responses Made:</label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean:userInstance,field:'responsesMade','errors')}">
+                                    <input type="text" id="responsesMade" name="responsesMade" value="${fieldValue(bean:userInstance,field:'responsesMade')}" />
                                 </td>
                             </tr> 
                         
