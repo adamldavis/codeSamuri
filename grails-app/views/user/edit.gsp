@@ -83,7 +83,6 @@
                     <li><g:link controller="response" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
                   </g:each>
                 </ul>
-            <g:link controller="response" params="['user.id':userInstance?.id]" action="create">Add Response</g:link>
 
             </td>
             </tr>

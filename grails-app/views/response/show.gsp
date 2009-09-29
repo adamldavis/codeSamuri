@@ -10,7 +10,7 @@
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
             <span class="menuButton"><g:link class="list" action="list">Response List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Response</g:link></span>
+            
         </div>
         <div class="body">
             <h1>Show Response</h1>
@@ -23,16 +23,9 @@
 
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Id:</td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean:responseInstance, field:'id')}</td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
                             <td valign="top" class="name">Text:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:responseInstance, field:'text')}</td>
+                            <td valign="top" class="text">${fieldValue(bean:responseInstance, field:'text')}</td>
                             
                         </tr>
                     

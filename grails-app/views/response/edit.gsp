@@ -10,7 +10,7 @@
         <div class="nav">
             <span class="menuButton"><a class="home" href="${resource(dir:'')}">Home</a></span>
             <span class="menuButton"><g:link class="list" action="list">Response List</g:link></span>
-            <span class="menuButton"><g:link class="create" action="create">New Response</g:link></span>
+            
         </div>
         <div class="body">
             <h1>Edit Response</h1>
@@ -56,7 +56,7 @@ value="${responseInstance?.comments}" />
                                     <label for="request">Request:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:responseInstance,field:'request','errors')}">
-                                    <g:select optionKey="id" from="${Request.list()}" name="request.id" value="${responseInstance?.request?.id}" ></g:select>
+                                    ${responseInstance?.request}
                                 </td>
                             </tr> 
                         
