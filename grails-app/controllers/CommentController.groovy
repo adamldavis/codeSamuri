@@ -2,37 +2,23 @@
 
 class CommentController {
     
-    def index = { redirect(action:list,params:params) }
+    def index = { redirect(controller:'response', action:'list') }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
-
-    def list = {
-        params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
-        [ commentInstanceList: Comment.list( params ), commentInstanceTotal: Comment.count() ]
-    }
-
-    def show = {
-        def commentInstance = Comment.get( params.id )
-
-        if(!commentInstance) {
-            flash.message = "Comment not found with id ${params.id}"
-            redirect(action:list)
-        }
-        else { return [ commentInstance : commentInstance ] }
-    }
 
     def delete = {
         def commentInstance = Comment.get( params.id )
         if(commentInstance) {
             try {
+                def rid = commentInstance.response.id
                 commentInstance.delete(flush:true)
                 flash.message = "Comment ${params.id} deleted"
-                redirect(action:list)
+                redirect(controller:'response', action:'show', id: rid)
             }
             catch(org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "Comment ${params.id} could not be deleted"
-                redirect(action:show,id:params.id)
+                redirect(action:edit,id:params.id)
             }
         }
         else {
@@ -67,8 +53,9 @@ class CommentController {
             }
             commentInstance.properties = params
             if(!commentInstance.hasErrors() && commentInstance.save()) {
-                flash.message = "Comment ${params.id} updated"
-                redirect(action:show,id:commentInstance.id)
+                flash.message = "Comment updated"
+                redirect(controller:'response', action:'show',
+                    id:commentInstance.response.id)
             }
             else {
                 render(view:'edit',model:[commentInstance:commentInstance])
@@ -82,7 +69,7 @@ class CommentController {
 
     def create = {
         if (session.userId == null) {
-            flash.message = "You must be logged in to create a Request"
+            flash.message = "You must be logged in to create a Comment"
             redirect(controller:'user', action:'login')
         }
         def commentInstance = new Comment()
@@ -97,8 +84,9 @@ class CommentController {
             def user = User.findByUserId(session.userId)
             user.commentsMade++
             user.save()
-            flash.message = "Comment ${commentInstance.id} created"
-            redirect(action:show,id:commentInstance.id)
+            flash.message = "Comment created"
+            redirect(controller:'response', action:'show',
+                id:commentInstance.response.id)
         }
         else {
             render(view:'create',model:[commentInstance:commentInstance])

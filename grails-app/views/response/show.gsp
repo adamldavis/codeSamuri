@@ -30,36 +30,23 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name">Comments:</td>
-                            
-                            <td  valign="top" style="text-align:left;" class="value">
-                                <ul>
-                                <g:each var="c" in="${responseInstance.comments}">
-                                    <li><g:link controller="comment" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-                                </g:each>
-                                </ul>
-                            </td>
-                            
-                        </tr>
-                    
-                        <tr class="prop">
                             <td valign="top" class="name">Created:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:responseInstance, field:'created')}</td>
+                            <td valign="top" class="date value">${fieldValue(bean:responseInstance, field:'created')}</td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name">Created By:</td>
                             
-                            <td valign="top" class="value"><g:link controller="user" action="show" id="${responseInstance?.createdBy?.id}">${responseInstance?.createdBy?.encodeAsHTML()}</g:link></td>
+                            <td valign="top" class="user value"><g:link controller="user" action="show" id="${responseInstance?.createdBy?.id}">${responseInstance?.createdBy?.encodeAsHTML()}</g:link></td>
                             
                         </tr>
                     
                         <tr class="prop">
                             <td valign="top" class="name">Rating:</td>
                             
-                            <td valign="top" class="value">${fieldValue(bean:responseInstance, field:'rating')}</td>
+                            <td valign="top" class="rating value">${fieldValue(bean:responseInstance, field:'rating')}</td>
                             
                         </tr>
                     
@@ -68,6 +55,26 @@
                             
                             <td valign="top" class="value"><g:link controller="request" action="show" id="${responseInstance?.request?.id}">${responseInstance?.request?.encodeAsHTML()}</g:link></td>
                             
+                        </tr>
+
+                        <tr class="prop">
+                            <td valign="top" class="name">Comments:</td>
+
+                            <td  valign="top" style="text-align:left;" class="value">
+                                <ul>
+                                <g:each var="c" in="${responseInstance.comments}">
+                                    <li>
+                                      <span class="rating">${c.rating}</span>
+                                      <span class="user">${c.createdBy}</span>
+                                      <span class="date"><g:formatDate format="yyyy-MM-dd" date="${c.created}"/></span>
+                                    <g:link controller="comment" action="edit" id="${c.id}">${c?.encodeAsHTML()}</g:link>
+                                </li>
+                                </g:each>
+                                </ul>
+                              <g:link controller="comment"
+                                      params="['response.id':responseInstance?.id]" action="create">Add Comment</g:link>
+                            </td>
+
                         </tr>
                     
                     </tbody>

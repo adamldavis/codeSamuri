@@ -83,12 +83,18 @@
             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
               <td>
-                Created: <g:link action="show" id="${responseInstance.id}">${fieldValue(bean:responseInstance, field:'created')}</g:link>
-            By: <g:link controller="user" action="show" id="${responseInstance.createdBy.id}">${fieldValue(bean:responseInstance, field:'createdBy')}</g:link>
-            Rating: ${fieldValue(bean:responseInstance, field:'rating')}
-            </td>
+                <span class="detail">
+                  Created: <g:link controller="response" action="show" id="${responseInstance.id}">${fieldValue(bean:responseInstance, field:'created')}</g:link>
+                </span>
+                <span class="detail">
+                  By: <g:link controller="user" action="show" id="${responseInstance.createdBy.id}">${fieldValue(bean:responseInstance, field:'createdBy')}</g:link>
+                </span>
+                <span class="detail">
+                  Rating: ${fieldValue(bean:responseInstance, field:'rating')}
+                </span>
+              </td>
 
-            <td>${fieldValue(bean:responseInstance, field:'text')}</td>
+              <td>${fieldValue(bean:responseInstance, field:'text')}</td>
 
             </tr>
           </g:each>
