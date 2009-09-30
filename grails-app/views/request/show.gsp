@@ -39,21 +39,21 @@
             <tr class="prop">
               <td valign="top" class="name">Created:</td>
 
-              <td valign="top" class="value">${fieldValue(bean:requestInstance, field:'created')}</td>
+              <td valign="top" class="date">${fieldValue(bean:requestInstance, field:'created')}</td>
 
             </tr>
 
             <tr class="prop">
               <td valign="top" class="name">Created By:</td>
 
-              <td valign="top" class="value"><g:link controller="user" action="show" id="${requestInstance?.createdBy?.id}">${requestInstance?.createdBy?.encodeAsHTML()}</g:link></td>
+              <td valign="top" class="user"><g:link controller="user" action="show" id="${requestInstance?.createdBy?.id}">${requestInstance?.createdBy?.encodeAsHTML()}</g:link></td>
 
           </tr>
 
           <tr class="prop">
             <td valign="top" class="name">Rating:</td>
 
-            <td valign="top" class="value">${fieldValue(bean:requestInstance, field:'rating')}</td>
+            <td valign="top" class="rating">${fieldValue(bean:requestInstance, field:'rating')}</td>
 
           </tr>
 
@@ -83,14 +83,14 @@
             <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 
               <td>
-                <span class="detail">
-                  Created: <g:link controller="response" action="show" id="${responseInstance.id}">${fieldValue(bean:responseInstance, field:'created')}</g:link>
+                <span class="detail date">
+                  <g:link controller="response" action="show" id="${responseInstance.id}">${fieldValue(bean:responseInstance, field:'created')}</g:link>
                 </span>
-                <span class="detail">
-                  By: <g:link controller="user" action="show" id="${responseInstance.createdBy.id}">${fieldValue(bean:responseInstance, field:'createdBy')}</g:link>
+                <span class="detail user">
+                  <g:link controller="user" action="show" id="${responseInstance.createdBy.id}">${fieldValue(bean:responseInstance, field:'createdBy')}</g:link>
                 </span>
-                <span class="detail">
-                  Rating: ${fieldValue(bean:responseInstance, field:'rating')}
+                <span class="detail rating">
+                  ${fieldValue(bean:responseInstance, field:'rating')}
                 </span>
               </td>
 
