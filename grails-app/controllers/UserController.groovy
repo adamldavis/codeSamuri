@@ -115,7 +115,7 @@ class UserController {
         def userInstance = new User(params)
         if(!userInstance.hasErrors() && userInstance.save()) {
             flash.message = "User ${userInstance} created"
-            redirect(action:show,id:userInstance.id)
+            redirect(action:login)
         }
         else {
             render(view:'create',model:[userInstance:userInstance])

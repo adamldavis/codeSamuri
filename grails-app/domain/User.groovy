@@ -12,7 +12,7 @@ class User {
 
     static constraints = {
         userId(size:4..20,unique:true)
-        email(size:4..100,unique:true)
+        email(size:4..100)
         password(size:6..16)
     }
     static optionals = ["email"]
