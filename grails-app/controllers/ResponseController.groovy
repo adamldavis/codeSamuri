@@ -1,12 +1,22 @@
 
 
-class ResponseController {
+class ResponseController extends RatingsController {
     
     def index = { redirect(action:list,params:params) }
 
     // the delete, save and update actions only accept POST requests
     static allowedMethods = [delete:'POST', save:'POST', update:'POST']
 
+    def up = {
+        def responseInstance = Response.get( params.id )
+        updateRating(responseInstance, 1)
+    }
+
+    def down = {
+        def responseInstance = Response.get( params.id )
+        updateRating(responseInstance, -1)
+    }
+    
     def list = {
         params.max = Math.min( params.max ? params.max.toInteger() : 10,  100)
         [ responseInstanceList: Response.list( params ), responseInstanceTotal: Response.count() ]

@@ -307,3 +307,15 @@ th.desc a {
     background: transparent url(../images/skin/database_save.png) 5px 50% no-repeat;
     padding-left: 28px;
 }
+input.up,input.down {
+    background: transparent url(../images/skin/up.png) 1px 50% no-repeat;
+    padding-left: 20px;
+    height: 18px;
+    font-size: 5px;
+    color: white;
+    width: 20px;
+    border: 0px;
+}
+input.down {
+    background: transparent url(../images/skin/down.png) 1px 50% no-repeat;
+}

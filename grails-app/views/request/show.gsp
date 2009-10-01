@@ -53,7 +53,13 @@
           <tr class="prop">
             <td valign="top" class="name">Rating:</td>
 
-            <td valign="top" class="rating">${fieldValue(bean:requestInstance, field:'rating')}</td>
+            <td valign="top" class="rating">
+          <g:form method="post">
+            <input type="hidden" name="id" value="${requestInstance?.id}" />
+            <span class="button"><g:actionSubmit class="up" value="up" /></span>${fieldValue(bean:requestInstance, field:'rating')}
+            <span class="button"><g:actionSubmit class="down" value="down" /></span>
+          </g:form>
+          </td>
 
           </tr>
 
@@ -90,7 +96,7 @@
                   <g:link controller="user" action="show" id="${responseInstance.createdBy.id}">${fieldValue(bean:responseInstance, field:'createdBy')}</g:link>
                 </span>
                 <span class="detail rating">
-                  ${fieldValue(bean:responseInstance, field:'rating')}
+${fieldValue(bean:responseInstance, field:'rating')}
                 </span>
               </td>
 
