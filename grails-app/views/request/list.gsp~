@@ -23,6 +23,8 @@
                         
                    	        <g:sortableColumn property="title" title="Title" />
                         
+                   	        <g:sortableColumn property="text" title="Text" />
+                        
                    	        <g:sortableColumn property="created" title="Created" />
                         
                    	        <th>Created By</th>
@@ -36,6 +38,8 @@
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
                             <td><g:link action="show" id="${requestInstance.id}">${fieldValue(bean:requestInstance, field:'title')}</g:link></td>
+                        
+                            <td>${fieldValue(bean:requestInstance, field:'text')}</td>
                         
                             <td>${fieldValue(bean:requestInstance, field:'created')}</td>
                         

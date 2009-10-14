@@ -2,7 +2,6 @@
 
 <html>
     <head>
-    	<gui:resources components="richEditor, dialog"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="layout" content="main" />
         <title>Create Request</title>         
@@ -41,7 +40,7 @@
                                     <label for="text">Text:</label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean:requestInstance,field:'text','errors')}">
-				    <gui:richEditor id="text" name="text" value="${fieldValue(bean:requestInstance, field:'text')}"/>
+                                    <textarea rows="5" cols="40" name="text">${fieldValue(bean:requestInstance, field:'text')}</textarea>
                                 </td>
                             </tr> 
                         

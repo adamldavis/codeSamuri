@@ -4,9 +4,9 @@
     <meta name="layout" content="main" />
   </head>
   <body>
-    <h1 style="margin-left:20px;">Welcome to Code SAMURI</h1>
+    <h1 style="margin-left:20px;">Welcome to Code Samari</h1>
     <p id="intro" style="margin-left:20px;width:80%">
-      SAMURI=Sharing And Multiple User Response Integration.
+      A place for coders.
     </p>
     <div id="links" class="dialog" style="margin-left:20px;width:60%;">
       <ul>

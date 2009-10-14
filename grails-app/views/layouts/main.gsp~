@@ -10,10 +10,7 @@
   <div id="spinner" class="spinner" style="display:none;">
     <img src="${resource(dir:'images',file:'spinner.gif')}" alt="Spinner" />
   </div>
-  <div class="logo">
-  <img src="${resource(dir:'images',file:'Crystal_Clear_app_browser_32.png')}" alt="Code SAMURI" />
-  Code SAMURI
-  </div>
+  <div class="logo"><img src="${resource(dir:'images',file:'Crystal_Clear_app_browser_32.png')}" alt="Code SAMURI" /></div>
 <g:if test="${session.userId}">
   <div id="userid">Logged in as: <span class="user">${session.userId}</span></div>
   <g:form controller="user" method="post" >
